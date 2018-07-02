@@ -1,0 +1,157 @@
+swagger: "2.0"
+info:
+  description: "This is a sample network server"
+  version: "1.0.0"
+  title: "Swagger network"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "xxxx"
+basePath: "/v1"
+tags:
+- name: "networks"
+  description: "Everything about your networks"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /networks:
+    get:
+      summary: "List networks"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        500:
+          description: "Invalid response"
+        200:
+          description: "network detail"
+          schema:
+            $ref: '#/definitions/ListNetworkResponse'
+      
+    post:
+      summary: "Add a new network"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Network object that needs to be added"
+        required: true
+        schema:
+          $ref: '#/definitions/Network'
+      responses:
+        400:
+          description: "Invalid input"
+        201:
+          description: "network name"
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: "network1"
+  /networks/{name}:
+    get:
+      summary: "Get a network by name"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "network name"
+        required: true
+        type: "string"
+        format: "string"
+      responses:
+        200:
+          description: response network
+          schema:
+            $ref: '#/definitions/NetworkDetail'
+        500:
+          description: "Invalid response"
+          
+    delete:
+      summary: "Deletes a network"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "network name to delete"
+        required: true
+        type: "string"
+        format: "string"
+      responses:
+        400:
+          description: "failed delete the network"
+        204:
+          description: "network deleted by name"
+  
+definitions:
+  Network:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "network1"
+      startIP:
+        type: "string"
+        example: "192.168.4.23"
+      endIP:
+        type: "string"
+        example: "192.168.4.100"
+      route:
+        type: "string"
+        example: "192.168.4.1"
+      mask:
+        type: "integer"
+        example: 24
+      vlan:
+        type: "integer"
+        example: 1024
+  ListNetworkResponse:
+    type: array
+    items:
+      $ref: '#/definitions/NetworkDetail'
+     
+        
+  NetworkDetail:
+      type: object
+      properties:
+        name:
+          type: "string"
+          example: "network1"
+        startIP:
+          type: "string"
+          example: "192.168.4.20"
+        endIP:
+          type: "string"
+          example: "192.168.4.100"
+        route:
+          type: "string"
+          example: "192.168.4.1"
+        mask:
+          type: "integer"
+          example: 24
+        vlan:
+          type: "integer"
+          example: 1024
+        total:
+          type: integer
+          example: 81
+        free:
+          type: integer
+          example: 80
+    

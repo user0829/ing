@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springmvc.dao.InfoDao">
+           
+           <resultMap type="com.springmvc.model.DockerInfo" id="dockerInfoMapper">
+           <result column="system_name" property="systemName"/>
+           <result column="site" property="site"/>
+           <result column="sub_system" property="subSystem"/>
+           <result column="sub_system_code" property="subSystemCode"/>
+           <result column="disaster_level" property="disasterLevel"/>
+           <result column="deployment" property="deployment"/>
+           <result column="performance_need" property="performanceNeed"/>
+           <result column="instances" property="instances"/>
+           <result column="mysql_version" property="mysqlVersion"/>
+           <result column="port_num" property="portNum"/>
+           <result column="character_set" property="characterSet"/>
+           <result column="network_section" property="networkSection"/>
+           <result column="os_version" property="osVersion"/>
+           <result column="data_volume" property="dataVolume"/>
+           <result column="log_volume" property="logVolume"/>
+           <result column="temp_volume" property="tempVolume"/>
+           <result column="backup_volume" property="backupVolume"/>
+           <result column="database_domain_name" property="databaseDomainName"/>
+           <result column="creater_id" property="createrId"/>
+           <result column="create_time" property="createTime"/>
+           <result column="system_name" property="backupTiming"/>
+           </resultMap>
+           
+           
+         <insert id="insertInfo" parameterType="DockerInfo" keyProperty="id" useGeneratedKeys="true">
+             insert into icbc_dccsh_mysql_docker_new(system_name,site,sub_system,sub_system_code,disaster_level,deployment
+             ,performance_need,instances,mysql_version,port_num,character_set,network_section,os_version,data_volume,log_volume,temp_volume,
+             backup_volume,database_domain_name,creater_id,create_time,backup_timing) 
+         values 
+         (        
+         #{systemName},#{site},#{subSystem},#{subSystemCode},#{disasterLevel},#{deployment},#{performanceNeed}
+         ,#{instances},#{mysqlVersion},${portNum},#{characterSet},#{networkSection},#{osVersion}
+         ,${dataVolume},${logVolume},${tempVolume},${backupVolume},#{databaseDomainName},#{createrId}
+         ,SYSDATE(),#{backupTiming})
+         </insert>
+         
+         <select id="selectInfo" resultMap="dockerInfoMapper">
+         
+         select * from icbc_dccsh_mysql_docker_new order by create_time asc
+         </select>
+         
+         <select id="selectSegment"  parameterType="com.springmvc.model.addcontent.NetworkSite" resultType="HashMap">
+         
+         select start_ip,end_ip from icbc_dccsh_mysql_docker_site_network where site=#{site}
+         </select>
+         
+         <delete id="deletePod" parameterType="java.lang.String">
+         delete from icbc_dccsh_mysql_docker_new where sub_system_code=#{subSystemCode}
+         </delete>
+    
+</mapper>

@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+.fl{
+    float: left;
+}
+.myactive{
+    background: #DD4B39!important;
+    color: #fff!important;
+}
+.clearfix:after{
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+#dbaNav li{
+    padding: 6px 10px;
+    cursor: pointer;
+    background: #222D32;
+    color: #b8c7ce;
+}
+#dbaNav li:hover{
+    background: #DD4B39;
+    color: #fff;
+}
+.mytab{
+    display: none;
+}
+#addMySQLport,#addCharacter_set,#addDBA,#addDep,#addColony{
+    margin-top: 5px;
+}
+.myform{
+    display: none;
+}
+#subPort,#subcharacter_set,#subDBAperson,#subdepManager,#subSite,#subColony{
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: #fff;
+}
+.seek{
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+.seek select{
+    padding-bottom: 3px;
+    width: 218px;
+}
+#formHintSuccess,#formHintWarning,#deleteSuccess,#deleteError{
+    display: none;
+}
+#formHintSuccess,#formHintWarning,#deleteSuccess,#deleteError{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    width: 198px;
+    height: 68px;
+    line-height: 68px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 1px 1px 30px rgba(0,0,0,.3);
+    text-align: center;
+    font-size: 16px;
+}
+.myico{
+    position:relative;
+    top:18px;
+    left:32px;
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+

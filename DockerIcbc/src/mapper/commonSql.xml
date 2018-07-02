@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.CommonDao">
+    
+         <select id="selectChar"  resultType="java.lang.String">
+         
+         select * from icbc_dccsh_mysql_docker_character ORDER BY character_set ASC
+         </select>
+         
+          <select id="selectMysql"  resultType="java.lang.String">
+         
+         select * from icbc_dccsh_mysql_docker_db_version order by mysql_version ASC
+         </select>
+         <select id="selectPerformance"  resultType="java.lang.String">
+         
+         select * from icbc_dccsh_mysql_docker_performance  order by  performance_index ASC
+         </select>
+          <select id="selectOsVersion"  resultType="java.lang.String">
+         
+         select * from icbc_dccsh_mysql_docker_os_version  order by os_version ASC
+         </select>
+         
+         <select id="selectDbaManager" resultType="HashMap">
+         	select * from icbc_dccsh_mysql_docker_dba order by dba_id ASC
+         </select>
+         
+         <select id="selectDpartManager" resultType="HashMap">
+         	select * from icbc_dccsh_mysql_docker_manager order by manager_id ASC
+         </select>
+         
+         <select id="selectSiteCluster" resultType="HashMap">
+         	select * from icbc_dccsh_mysql_docker_site_network order by site ASC
+         </select>
+         <select id="selectSiteNetwork" resultType="HashMap">
+         	select * from icbc_dccsh_mysql_docker_site_network order by site ASC
+         </select>
+         
+         
+         <insert id="addMysql" parameterType="com.springmvc.model.addcontent.MysqlVersion">
+         	insert into icbc_dccsh_mysql_docker_db_version values(#{mysqlVersion})
+         </insert>
+         <insert id="addCharSet" parameterType="com.springmvc.model.addcontent.CharacterSet">
+         	insert into icbc_dccsh_mysql_docker_character values(#{characterSet})
+         </insert>
+         <insert id="addDbaPerson" parameterType="com.springmvc.model.addcontent.DbaManager">
+         	insert into icbc_dccsh_mysql_docker_dba values(#{dbaName},#{dbaId})
+         </insert>
+         <insert id="addPartManager" parameterType="com.springmvc.model.addcontent.DepartManager">
+         	insert into icbc_dccsh_mysql_docker_manager values(#{departName},#{managerId},#{managerName})
+         </insert>
+         <insert id="addSiteInfo" parameterType="com.springmvc.model.addcontent.Site">
+         	insert into icbc_dccsh_mysql_docker_site values(#{site},#{apiServerIp},#{port},#{remark})
+         </insert>
+         <insert id="addColony" parameterType="com.springmvc.model.addcontent.NetworkSite">
+         	insert into icbc_dccsh_mysql_docker_site_network values(#{site},#{startIp},#{endIp},#{route},#{mask},#{vlan})
+         </insert>
+         
+         <delete id="deleteMysqlInfo" parameterType="com.springmvc.model.addcontent.MysqlVersion">
+         	delete from icbc_dccsh_mysql_docker_db_version where mysql_version=#{mysqlVersion}
+         </delete>
+          <delete id="deleteCharInfo" parameterType="com.springmvc.model.addcontent.CharacterSet">
+         	delete from icbc_dccsh_mysql_docker_character where character_set=#{characterSet}
+         </delete>
+          <delete id="deleteDbaInfo" parameterType="com.springmvc.model.addcontent.DbaManager">
+         	delete from icbc_dccsh_mysql_docker_dba where dba_id=#{dbaId}
+         </delete>
+         <delete id="deleteDepartInfo" parameterType="com.springmvc.model.addcontent.DepartManager">
+         	delete from icbc_dccsh_mysql_docker_manager where manager_id=#{managerId}
+         </delete>
+         <delete id="deleteSiteInfo" parameterType="com.springmvc.model.addcontent.Site">
+         	delete from icbc_dccsh_mysql_docker_site where api_server_ip=#{apiServerIp}
+         </delete>
+         <delete id="deleteNetworkSite" parameterType="com.springmvc.model.addcontent.NetworkSite">
+         	delete from icbc_dccsh_mysql_docker_site_network where start_ip=#{startIp}
+         </delete>
+    
+</mapper>

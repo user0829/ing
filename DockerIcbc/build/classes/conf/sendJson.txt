@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "name": "mysql8",
+    "namespace": "default",
+    "labels": {
+      "network": "network8"
+    }
+  },
+  "spec": {
+    "volumes": [
+      {
+        "name": "data",
+        "hostPath": {
+          "path": "/test_data",
+          "type": "DirectoryOrCreate"
+        }
+      },
+      {
+        "name": "log",
+        "hostPath": {
+          "path": "/test_data_log",
+          "type": "DirectoryOrCreate"
+        }
+      },
+      {
+        "name": "tmp",
+        "hostPath": {
+          "path": "/test_data_tmp",
+          "type": "DirectoryOrCreate"
+        }
+      },
+      {
+        "name": "backup",
+        "hostPath": {
+          "path": "/test_backup",
+          "type": "DirectoryOrCreate"
+        }
+      },
+      {
+        "name": "newdatavolume",
+        "hostPath": {
+          "path": "/newdata",
+          "type": "DirectoryOrCreate"
+        }
+      },
+      {
+        "name": "newlogvolume",
+        "hostPath": {
+          "path": "/newdata_log",
+          "type": "DirectoryOrCreate"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "mysql8",
+        "image": "docker.hub:6000/cloud/mysql_server:4.0",
+        "command": [
+          "/opt/autostart.sh",
+          "master",
+          "84.10.100.133"
+        ],
+        "ports": [
+          {
+            "containerPort": 3306,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 42002,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 42000,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 7016,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 7017,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 7018,
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "limits": {
+            "cpu": "8",
+            "memory": "32Gi"
+          },
+          "requests": {
+            "cpu": "8",
+            "memory": "32Gi"
+          }
+        },
+        "volumeMounts": [
+          {
+            "name": "data",
+            "mountPath": "/data"
+          },
+          {
+            "name": "log",
+            "mountPath": "/data_log"
+          },
+          {
+            "name": "tmp",
+            "mountPath": "/data_tmp"
+          },
+          {
+            "name": "backup",
+            "mountPath": "/backup"
+          },
+          {
+            "name": "newdatavolume",
+            "mountPath": "/newdata2"
+          },
+          {
+            "name": "newlogvolume",
+            "mountPath": "/newdata2_log"
+          }
+        ],
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "imagePullPolicy": "IfNotPresent",
+        "securityContext": {
+          "privileged": true
+        }
+      }
+    ],
+    "restartPolicy": "Never",
+    "terminationGracePeriodSeconds": 30,
+    "nodeSelector": {
+      "work": "test"
+    }
+  }
+}
+

@@ -1,0 +1,106 @@
+/*左侧导航区*/
+.main-container {
+    position: relative;
+}
+
+.left_list {
+    border: 0;
+    position: fixed;
+    top: 0;
+    overflow: auto;
+    z-index: 1;
+    width: 200px !important;
+    height: 100% !important;
+    background: rgb(32,48,64);
+}
+.left_list li a{
+    color: #ffffff;
+}
+.l_top_nav {
+    background: #0a9dc7;
+    height: 42px;
+    line-height: 46px;
+    padding-left: 20px;
+    color: #fff;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/*ul一级导航*/
+.nav_list {
+    width: 200px;
+    /*background: #0aaedb;*/
+    cursor: pointer;
+}
+#user_ad,#cur_infor,#res_man,#txt_gl{
+    border-bottom: 1px solid #999;
+}
+.menu{
+    border-bottom: 1px solid #999;
+}
+ul.nav_list > li > a {
+    display: block;
+    padding: 0 16px 0 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+ul.nav_list > li > a > span {
+    display: inline-block;
+    width: 30px;
+    position: relative;
+    top: 1px;
+}
+
+ul.nav_list > li > a > span.glyphicon-chevron-down {
+    position: absolute;
+    left: 166px;
+    top: 14px;
+    width: 30px;
+}
+
+.nav_list > li > ul.menu {
+    /*padding: 5px 0;*/
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(40,64,80, 0.42);
+    font-size: 13px;
+}
+
+/*li二级导航*/
+.nav_list > li > ul.menu > li {
+    position: relative;
+    top: 0;
+}
+
+.active {
+    background: #0a79a0;
+}
+
+.nav_list > li > ul.menu > li > a {
+    padding: 12px 0 9px 37px;
+    display: block;
+    position: relative;
+    top: 0;
+    height: 40px;
+
+}
+.nav_list > li > ul.menu > li > a > i {
+    font-size: 10px;
+    position: absolute;
+    left: 15px;
+    top: 12px;
+}
+
+.icon-double-angle-right:before {
+    content: ">";
+}
+.page-content {
+    padding: 0 6px 36px 200px;
+}
+/*右侧显示内容区*/
+.page_top{
+    position: relative;
+    top:61px;
+    left:220px;
+    padding: 8px 20px;
+}

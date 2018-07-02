@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+.fl{
+    float: left;
+}
+.myactive{
+    background: #DD4B39!important;
+    color: #fff!important;
+}
+.clearfix:after{
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+#dbaNav li{
+    padding: 6px 10px;
+    cursor: pointer;
+    background: #222D32;
+    color: #b8c7ce;
+}
+#dbaNav li:hover{
+    background: #DD4B39;
+    color: #fff;
+}
+.mytab{
+    display: none;
+}
+#addMySQLport,#addCharacter_set,#addDBA,#addDep,#addColony{
+    margin-top: 5px;
+}
+.myform{
+    display: none;
+}
+#subPort,#subcharacter_set,#subDBAperson,#subdepManager,#subSite,#subColony{
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: #fff;
+}

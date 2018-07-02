@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.active{
+    background: rgb(40,64,80);
+}
+ul,li{
+    list-style: none;
+}
+table,tr,th,td{
+    font-size: 12px;
+}
+th,td{
+    padding: 5px 16px;
+    text-align: center;
+}
+.clearfix:after{
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+.mynav ul li{
+    float: left;
+    padding: 10px 14px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.mynav ul li.active{
+    color: #ffffff;
+}
+/*.mynav ul li:hover{*/
+    /*background: rgb(40,64,80);*/
+    /*cursor: pointer;*/
+/*}*/
+
+.mynav ul li span{
+    padding-right: 10px;
+    color: rgb(168,184,200);
+}
+
+.mynav ul li span.glyphicon-remove-sign{
+    padding-right: 0;
+    padding-left: 10px;
+    color: rgb(240,240,240);
+}
+#myform{
+    padding-left: 10px;
+    margin-top: 10px;
+}
+#myform span label{
+    font-size: 12px;
+}
+#myform span select{
+    width: 120px;
+}
+#myform span:nth-child(2),#myform span:nth-child(3){
+    padding-left: 8px;
+}
+#myform span:nth-child(2) input{
+    height: 20px;
+    padding-top: 4px;
+}
+.tab_nav{
+    padding-left: 10px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+.tab_nav ul li{
+    float: left;
+    padding: 4px 8px;
+    margin-right: 8px;
+    font-size: 12px;
+    background: rgb(232,232,232);
+    border: 1px solid rgb(216,216,216);
+}
+.tab_nav ul li:nth-child(7){
+    margin-right: 0;
+}
+.tab_nav ul li span:nth-child(2){
+    padding-left: 3px;
+}
+#podsList{
+    margin: 0 8px;
+}
+#podsList,#mytable0,#mytable1{
+    overflow-x: auto;
+}
+
+#mytable0 tr:nth-child(1){
+    background: rgb(216,216,216);
+}
+#mytable1 tr:nth-child(1){
+    background: rgb(216,216,216);
+}
+#mytable1{
+    
+}
